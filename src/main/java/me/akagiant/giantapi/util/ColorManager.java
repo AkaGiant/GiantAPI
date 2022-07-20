@@ -26,8 +26,6 @@ public class ColorManager {
             }
         }
 
-
-
         return org.bukkit.ChatColor.translateAlternateColorCodes('&', msg);
     }
 
