@@ -1,4 +1,4 @@
-# GiantAPI v0.1
+# GiantAPI v0.1.1
 ## Contents
 ****
 - [Introduction](#introduction)
@@ -31,7 +31,7 @@ code I use over and over again.
 <dependency>
     <groupId>com.github.AkaGiant</groupId>
     <artifactId>GiantAPI</artifactId>
-    <version>0.1</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 
@@ -58,7 +58,7 @@ repositories {
 Groovy/Kotlin:
 ```groovy
 dependencies {
-    implementation 'com.github.AkaGiant:GiantAPI:0.1'
+    implementation 'com.github.AkaGiant:GiantAPI:0.1.1'
 }
 ```
 
@@ -91,7 +91,6 @@ Plans for Improvement
     <li>Add Gradient Color Coding
     <li>Add String[] option</li>
     <li>Add TextComponent Handling</li>
-
 </ul>
 
 
