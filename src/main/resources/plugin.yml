@@ -1,0 +1,7 @@
+name: GiantAPI
+version: '${project.version}'
+main: me.akagiant.giantapi.GiantAPI
+api-version: 1.19
+authors: [ AkaGiant ]
+description: A Simple "API"
+website: http://github.com/AkaGiant
