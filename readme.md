@@ -5,6 +5,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
   - [ColorManager](#color-manager---hexdecimal-color-formatting)
+  - [Config](#config---handler-for-configuration-files-root-level)
 
 ## Introduction
 ****
@@ -31,7 +32,7 @@ code I use over and over again.
 <dependency>
     <groupId>com.github.AkaGiant</groupId>
     <artifactId>GiantAPI</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 </dependency>
 ```
 
@@ -58,7 +59,7 @@ repositories {
 Groovy/Kotlin:
 ```groovy
 dependencies {
-    implementation 'com.github.AkaGiant:GiantAPI:0.1.1'
+    implementation 'com.github.AkaGiant:GiantAPI:0.1.2'
 }
 ```
 
@@ -66,7 +67,6 @@ dependencies {
 
 ### Color Manager - HexDecimal Color Formatting
 ****
-### Primary Class: ColorManager.java
 
 Methods:
 ```java
@@ -91,6 +91,28 @@ Plans for Improvement
     <li>Add Gradient Color Coding
     <li>Add String[] option</li>
     <li>Add TextComponent Handling</li>
+</ul>
+
+### Config - Handler for Configuration Files (root level)
+****
+Examples:
+```java
+// Example Standard
+// USE MUST CREATE THE FILE UNDER RESOURCES TOO.
+Config config = new Config("config");
+Double defaultBalance = config.getConfig().getDouble("defaultBalance");
+config.getConfig().set("defaultBalance", 100);
+config.saveConfig();
+
+// How to reload
+config.reloadConfig();
+```
+
+
+Plans for Improvement
+<ul>
+    <li>Add ability to reload all configuration files from one method
+    <li>Add ability to create files in subdirectories.</li>
 </ul>
 
 
