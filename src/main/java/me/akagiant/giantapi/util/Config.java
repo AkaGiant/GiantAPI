@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Config {
@@ -132,7 +131,7 @@ public class Config {
     private static List<File> listf(String directoryName) {
         File directory = new File(directoryName);
 
-        List<File> resultList = new ArrayList<File>();
+        List<File> resultList = new ArrayList<>();
 
         // get all the files from a directory
         File[] fList = directory.listFiles();
@@ -143,7 +142,6 @@ public class Config {
                 resultList.addAll(listf(file.getAbsolutePath()));
             }
         }
-        //System.out.println(fList);
         return resultList;
     }
     public static void reloadConfig(File file) {
