@@ -22,8 +22,8 @@ public class Config {
 
     @SuppressWarnings("ConstantConditions")
     public Config(Plugin plugin, String fileName) {
-        this.fileName = fileName;
         Config.plugin = plugin;
+        this.fileName = fileName;
         file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + fileName + ".yml");
         saveDefaultConfig();
         config = YamlConfiguration.loadConfiguration(file);
@@ -125,29 +125,27 @@ public class Config {
         }
     }
 
-    public static List<File> reloadAllConfigs() {
-        for (File file : listf()) {
-            Bukkit.getLogger().info(file.getName());
-        }
-
-
+    public static List<File> getAllConfigurationFiles(Plugin plugin) {
+        return listf(plugin.getDataFolder().getAbsolutePath());
     }
 
-    public static List<File> listf(String directory) {
-        List<File> files = new ArrayList<>();
+    private static List<File> listf(String directoryName) {
+        File directory = new File(directoryName);
 
-        if (plugin.getDataFolder().listFiles() == null)  return null;
+        List<File> resultList = new ArrayList<File>();
 
-        for (File file : plugin.getDataFolder().listFiles()) {
-            if (file.isDirectory()) {
-                files.addAll(Arrays.asList(file.listFiles()));
-            } else {
-                files.add(file);
+        // get all the files from a directory
+        File[] fList = directory.listFiles();
+        for (File file : fList) {
+            if (file.isFile()) {
+                resultList.add(file);
+            } else if (file.isDirectory()) {
+                resultList.addAll(listf(file.getAbsolutePath()));
             }
         }
-        return files;
+        //System.out.println(fList);
+        return resultList;
     }
-
     public static void reloadConfig(File file) {
         if (!exists(file)) {
             Bukkit.getLogger().severe(file.getName() + ".yml does not exists!");

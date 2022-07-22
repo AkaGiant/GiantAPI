@@ -99,7 +99,7 @@ Examples:
 ```java
 // Example Standard
 // USE MUST CREATE THE FILE UNDER RESOURCES TOO.
-Config config = new Config("config");
+Config config = new Config(plugin, "config");
 Double defaultBalance = config.getConfig().getDouble("defaultBalance");
 config.getConfig().set("defaultBalance", 100);
 config.saveConfig();
@@ -107,12 +107,23 @@ config.saveConfig();
 // How to reload
 config.reloadConfig();
 ```
+```java
+Config config;
+
+config = new Config(plugin, "configName", "subDir/subSubDir");
+```
+```java
+List<File> files = Config.getAllConfigurationFiles(this)
+for (File file : files) {
+    Config.reloadConfig(file);
+}
+```
 
 
 Plans for Improvement
 <ul>
-    <li>Add ability to reload all configuration files from one method
-    <li>Add ability to create files in subdirectories.</li>
+    <li>Method to create dynamic files without the need to create them under the resources' directory (these would be useful for files that are created dynamically (menus, player files etc...</li>
+    <li>Method to instantiate the plugin once rather tha having to implement it into every method that requires it.</li>
 </ul>
 
 
