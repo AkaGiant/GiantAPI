@@ -9,19 +9,32 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Config {
 
     private static Plugin plugin;
-    private String fileName;
+    private final String fileName;
     private FileConfiguration config;
     private File file;
 
     @SuppressWarnings("ConstantConditions")
     public Config(Plugin plugin, String fileName) {
         this.fileName = fileName;
+        Config.plugin = plugin;
         file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + fileName + ".yml");
         saveDefaultConfig();
+        config = YamlConfiguration.loadConfiguration(file);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public Config(Plugin plugin, String fileName, String subFolder) {
+        this.fileName = fileName;
+        Config.plugin = plugin;
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + subFolder + File.separator + fileName + ".yml");
+        saveDefaultConfig(subFolder);
         config = YamlConfiguration.loadConfiguration(file);
     }
 
@@ -36,6 +49,11 @@ public class Config {
         return YamlConfiguration.loadConfiguration(file);
     }
 
+    public static FileConfiguration getConfig(String configName, String subFolder) {
+        File file = getFile(configName, subFolder);
+        if (file == null) return null;
+        return YamlConfiguration.loadConfiguration(file);
+    }
 
 
     public File getFile() {
@@ -45,6 +63,14 @@ public class Config {
     @SuppressWarnings("ConstantConditions")
     static File getFile(String fileName) {
         File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + fileName + ".yml");
+        if (file.exists()) return file;
+        return null;
+    }
+
+
+    @SuppressWarnings("ConstantConditions")
+    static File getFile(String fileName, String subFolder) {
+        File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + subFolder + File.separator + fileName + ".yml");
         if (file.exists()) return file;
         return null;
     }
@@ -75,6 +101,16 @@ public class Config {
         }
     }
 
+    @SuppressWarnings("ConstantConditions")
+    public void saveDefaultConfig(String subDirectory) {
+        if (file == null)
+            file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + subDirectory + File.separator + fileName + ".yml");
+
+        if (!file.exists()) {
+            plugin.saveResource(subDirectory + File.separator + fileName + ".yml", false);
+        }
+    }
+
 
     public void reloadConfig() {
         if (!exists()) {
@@ -87,6 +123,29 @@ public class Config {
             YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(stream));
             config.setDefaults(defaultConfig);
         }
+    }
+
+    public static List<File> reloadAllConfigs() {
+        for (File file : listf()) {
+            Bukkit.getLogger().info(file.getName());
+        }
+
+
+    }
+
+    public static List<File> listf(String directory) {
+        List<File> files = new ArrayList<>();
+
+        if (plugin.getDataFolder().listFiles() == null)  return null;
+
+        for (File file : plugin.getDataFolder().listFiles()) {
+            if (file.isDirectory()) {
+                files.addAll(Arrays.asList(file.listFiles()));
+            } else {
+                files.add(file);
+            }
+        }
+        return files;
     }
 
     public static void reloadConfig(File file) {
