@@ -176,5 +176,4 @@ public class Config {
 
         return new Config(plugin, fileName, subFolder);
     }
-
 }

@@ -123,7 +123,7 @@ for (File file : files) {
 Creates a new yml file as named in the directory provided. 
 This method is not to replace new Config(plugin, "name") 
 As that Method is to create "default" files that come with the plugin.
-```java
+```javA
 if (Config.get(plugin, "configame").exists()) return;
 if (Config.get(plugin, "configame", "subDir/subSubDir").exists()) return;
 
