@@ -28,6 +28,7 @@ code I use over and over again.
     </repository>
 </repositories>
 
+
 <dependencies>
     <dependency>
         <groupId>com.github.AkaGiant</groupId>
@@ -35,8 +36,8 @@ code I use over and over again.
         <version>0.1.4</version>
     </dependency>
 </dependencies>
-```
 
+```
 ### Gradle
 
 Groovy:
