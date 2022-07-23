@@ -6,7 +6,7 @@
 
     <groupId>me.akagiant</groupId>
     <artifactId>GiantAPI</artifactId>
-    <version>0.1.2</version>
+    <version>dev-build</version>
     <packaging>jar</packaging>
 
     <name>GiantAPI</name>
@@ -71,6 +71,12 @@
             <artifactId>spigot-api</artifactId>
             <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
