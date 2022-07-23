@@ -1,4 +1,5 @@
-# GiantAPI v0.1.3
+## GiantAPI v0.1.4
+
 ## Contents
 ****
 - [Introduction](#introduction)
@@ -26,19 +27,18 @@ code I use over and over again.
         <url>https://jitpack.io</url>
     </repository>
 </repositories>
-```
-#### Dependency
-```xml
-<dependency>
-    <groupId>com.github.AkaGiant</groupId>
-    <artifactId>GiantAPI</artifactId>
-    <version>0.1.3</version>
-</dependency>
-```
 
+
+<dependencies>
+    <dependency>
+        <groupId>com.github.AkaGiant</groupId>
+        <artifactId>GiantAPI</artifactId>
+        <version>0.1.4</version>
+    </dependency>
+</dependencies>
+
+```
 ### Gradle
-
-#### Repository
 
 Groovy:
 ```groovy
@@ -59,11 +59,11 @@ repositories {
 Groovy/Kotlin:
 ```groovy
 dependencies {
-    implementation 'com.github.AkaGiant:GiantAPI:0.1.3'
+    implementation 'com.github.AkaGiant:GiantAPI:0.1.4'
 }
 ```
 
-## Usage:
+## Usage
 
 ### Color Manager - HexDecimal Color Formatting
 ****
@@ -93,7 +93,7 @@ Plans for Improvement
     <li>Add TextComponent Handling</li>
 </ul>
 
-### Config - Handler for Configuration Files (root level)
+## Config - Handler for Configuration Files (root level)
 ****
 Examples:
 ```java
@@ -119,11 +119,21 @@ for (File file : files) {
 }
 ```
 
+## NEW
+Creates a new yml file as named in the directory provided. 
+This method is not to replace new Config(plugin, "name") 
+As that Method is to create "default" files that come with the plugin.
+```java
+Config config = Config.create(plugin, "configName");
+Config config = Config.create(plugin, "configName", "subDir/subSubDir");
+
+config.set("defaultBalance", 10);
+config.saveConfig();
+```
+
 
 Plans for Improvement
 <ul>
     <li>Method to create dynamic files without the need to create them under the resources' directory (these would be useful for files that are created dynamically (menus, player files etc...</li>
     <li>Method to instantiate the plugin once rather tha having to implement it into every method that requires it.</li>
 </ul>
-
-
