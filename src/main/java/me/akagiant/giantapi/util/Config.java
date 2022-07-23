@@ -43,13 +43,13 @@ public class Config {
     public FileConfiguration getConfig() { return config; }
 
     public static FileConfiguration getConfig(String configName) {
-        File file = getFile(configName);
+        File file = getFile(plugin, configName);
         if (file == null) return null;
         return YamlConfiguration.loadConfiguration(file);
     }
 
     public static FileConfiguration getConfig(String configName, String subFolder) {
-        File file = getFile(configName, subFolder);
+        File file = getFile(plugin, configName, subFolder);
         if (file == null) return null;
         return YamlConfiguration.loadConfiguration(file);
     }
@@ -58,7 +58,7 @@ public class Config {
     public File getFile() { return file; }
 
     @SuppressWarnings("ConstantConditions")
-    static File getFile(String fileName) {
+    public static File getFile(Plugin plugin, String fileName) {
         File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + fileName + ".yml");
         if (file.exists()) return file;
         return null;
@@ -66,7 +66,7 @@ public class Config {
 
 
     @SuppressWarnings("ConstantConditions")
-    static File getFile(String fileName, String subFolder) {
+    public static File getFile(Plugin plugin, String fileName, String subFolder) {
         File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + subFolder + File.separator + fileName + ".yml");
         if (file.exists()) return file;
         return null;
@@ -149,6 +149,7 @@ public class Config {
     }
 
 
+    /** 0.1.4 */
     public static Config create(Plugin plugin, String fileName) {
 
         File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + fileName + ".yml");
@@ -175,4 +176,5 @@ public class Config {
 
         return new Config(plugin, fileName, subFolder);
     }
+
 }

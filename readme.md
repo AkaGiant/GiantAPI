@@ -123,6 +123,9 @@ Creates a new yml file as named in the directory provided.
 This method is not to replace new Config(plugin, "name") 
 As that Method is to create "default" files that come with the plugin.
 ```java
+if (Config.get(plugin, "configame").exists()) return;
+if (Config.get(plugin, "configame", "subDir/subSubDir").exists()) return;
+
 Config config = Config.create(plugin, "configName");
 Config config = Config.create(plugin, "configName", "subDir/subSubDir");
 
@@ -133,6 +136,5 @@ config.saveConfig();
 
 Plans for Improvement
 <ul>
-    <li>Method to create dynamic files without the need to create them under the resources' directory (these would be useful for files that are created dynamically (menus, player files etc...</li>
     <li>Method to instantiate the plugin once rather tha having to implement it into every method that requires it.</li>
 </ul>
