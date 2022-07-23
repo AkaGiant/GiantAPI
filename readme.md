@@ -32,7 +32,7 @@ code I use over and over again.
 <dependency>
     <groupId>com.github.AkaGiant</groupId>
     <artifactId>GiantAPI</artifactId>
-    <version>0.1.2</version>
+    <version>0.1.3</version>
 </dependency>
 ```
 
@@ -59,7 +59,7 @@ repositories {
 Groovy/Kotlin:
 ```groovy
 dependencies {
-    implementation 'com.github.AkaGiant:GiantAPI:0.1.2'
+    implementation 'com.github.AkaGiant:GiantAPI:0.1.3'
 }
 ```
 
