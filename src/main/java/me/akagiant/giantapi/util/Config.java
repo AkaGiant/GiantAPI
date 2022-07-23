@@ -143,7 +143,6 @@ public class Config {
                 resultList.addAll(listf(file.getAbsolutePath()));
             }
         }
-        //System.out.println(fList);
         return resultList;
     }
     public static void reloadConfig(File file) {
