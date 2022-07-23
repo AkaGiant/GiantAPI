@@ -1,4 +1,4 @@
-# GiantAPI v0.1.2
+# GiantAPI v0.1.3
 ## Contents
 ****
 - [Introduction](#introduction)
