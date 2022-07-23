@@ -6,7 +6,7 @@
 
     <groupId>me.akagiant</groupId>
     <artifactId>GiantAPI</artifactId>
-    <version>0.1.3</version>
+    <version>dev-build</version>
     <packaging>jar</packaging>
 
     <name>GiantAPI</name>
