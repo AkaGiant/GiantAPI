@@ -58,16 +58,16 @@ public class Config {
     public File getFile() { return file; }
 
     @SuppressWarnings("ConstantConditions")
-    public static File getFile(Plugin plugin, String fileName) {
-        File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + fileName + ".yml");
+    public static File getFile(Plugin plugin, String configName) {
+        File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + configName + ".yml");
         if (file.exists()) return file;
         return null;
     }
 
 
     @SuppressWarnings("ConstantConditions")
-    public static File getFile(Plugin plugin, String fileName, String subFolder) {
-        File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + subFolder + File.separator + fileName + ".yml");
+    public static File getFile(Plugin plugin, String configName, String subFolder) {
+        File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + subFolder + File.separator + configName + ".yml");
         if (file.exists()) return file;
         return null;
     }
