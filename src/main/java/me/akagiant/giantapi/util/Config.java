@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,9 +40,7 @@ public class Config {
     }
 
 
-    public FileConfiguration getConfig() {
-        return config;
-    }
+    public FileConfiguration getConfig() { return config; }
 
     public static FileConfiguration getConfig(String configName) {
         File file = getFile(configName);
@@ -56,9 +55,7 @@ public class Config {
     }
 
 
-    public File getFile() {
-        return file;
-    }
+    public File getFile() { return file; }
 
     @SuppressWarnings("ConstantConditions")
     static File getFile(String fileName) {
@@ -75,13 +72,8 @@ public class Config {
         return null;
     }
 
-    public boolean exists() {
-        return file.exists();
-    }
-
-    static boolean exists(File file) {
-        return file.exists();
-    }
+    public boolean exists() { return file.exists(); }
+    static boolean exists(File file) { return file.exists(); }
 
     public void saveConfig() {
         try {
@@ -125,9 +117,7 @@ public class Config {
         }
     }
 
-    public static List<File> getAllConfigurationFiles(Plugin plugin) {
-        return listf(plugin.getDataFolder().getAbsolutePath());
-    }
+    public static List<File> getAllConfigurationFiles(Plugin plugin) { return listf(plugin.getDataFolder().getAbsolutePath()); }
 
     private static List<File> listf(String directoryName) {
         File directory = new File(directoryName);
@@ -156,5 +146,33 @@ public class Config {
             YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(stream));
             config.setDefaults(defaultConfig);
         }
+    }
+
+
+    public static Config create(Plugin plugin, String fileName) {
+
+        File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + fileName + ".yml");
+        FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+        try {
+            config.save(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new Config(plugin, fileName);
+    }
+
+    public static Config create(Plugin plugin, String fileName, String subFolder) {
+
+        File file = new File(Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder(), File.separator + subFolder + File.separator + fileName + ".yml");
+        FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+
+        try {
+            config.save(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new Config(plugin, fileName, subFolder);
     }
 }
