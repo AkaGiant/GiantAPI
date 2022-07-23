@@ -1,4 +1,4 @@
-## GiantAPI v0.1.3
+## GiantAPI v0.1.31
 
 ## Contents
 ****
@@ -33,7 +33,7 @@ code I use over and over again.
     <dependency>
         <groupId>com.github.AkaGiant</groupId>
         <artifactId>GiantAPI</artifactId>
-        <version>0.1.3</version>
+        <version>0.1.31</version>
     </dependency>
 </dependencies>
 
@@ -59,7 +59,7 @@ repositories {
 Groovy/Kotlin:
 ```groovy
 dependencies {
-    implementation 'com.github.AkaGiant:GiantAPI:0.1.3'
+    implementation 'com.github.AkaGiant:GiantAPI:0.1.31'
 }
 ```
 
@@ -124,8 +124,8 @@ Creates a new yml file as named in the directory provided.
 This method is not to replace new Config(plugin, "name") 
 As that Method is to create "default" files that come with the plugin.
 ```javA
-if (Config.get(plugin, "configame").exists()) return;
-if (Config.get(plugin, "configame", "subDir/subSubDir").exists()) return;
+if (Config.getFile(plugin, "configame").exists()) return;
+if (Config.getFile(plugin, "configame", "subDir/subSubDir").exists()) return;
 
 Config config = Config.create(plugin, "configName");
 Config config = Config.create(plugin, "configName", "subDir/subSubDir");
