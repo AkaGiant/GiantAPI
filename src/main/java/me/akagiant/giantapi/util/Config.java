@@ -42,13 +42,13 @@ public class Config {
 
     public FileConfiguration getConfig() { return config; }
 
-    public static FileConfiguration getConfig(String configName) {
+    public static FileConfiguration getConfig(Plugin plugin, String configName) {
         File file = getFile(plugin, configName);
         if (file == null) return null;
         return YamlConfiguration.loadConfiguration(file);
     }
 
-    public static FileConfiguration getConfig(String configName, String subFolder) {
+    public static FileConfiguration getConfig(Plugin plugin, String configName, String subFolder) {
         File file = getFile(plugin, configName, subFolder);
         if (file == null) return null;
         return YamlConfiguration.loadConfiguration(file);

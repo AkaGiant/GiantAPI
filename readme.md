@@ -1,4 +1,4 @@
-## GiantAPI v0.1.31
+## GiantAPI v0.1.32
 
 ## Contents
 ****
@@ -33,7 +33,7 @@ code I use over and over again.
     <dependency>
         <groupId>com.github.AkaGiant</groupId>
         <artifactId>GiantAPI</artifactId>
-        <version>0.1.31</version>
+        <version>0.1.32</version>
     </dependency>
 </dependencies>
 
@@ -59,7 +59,7 @@ repositories {
 Groovy/Kotlin:
 ```groovy
 dependencies {
-    implementation 'com.github.AkaGiant:GiantAPI:0.1.31'
+    implementation 'com.github.AkaGiant:GiantAPI:0.1.32'
 }
 ```
 
